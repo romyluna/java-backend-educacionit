@@ -23,6 +23,7 @@ public class ProductoService {
     }
 
     public Producto getById(Long id){
+
         Optional<Producto> oProducto = this.productoRepository.buscarPorId(id);
         //si hay presencia de datos retorno el objeto
         if(oProducto.isPresent()){

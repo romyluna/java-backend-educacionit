@@ -2,6 +2,8 @@ package com.educacionit.limpiezait.controlador;
 
 import com.educacionit.limpiezait.dominio.Producto;
 import com.educacionit.limpiezait.servicio.ProductoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +13,10 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
+//nombre del endpoint en swagger:
+@Tag(name="Productos", description = "Operaciones relacionadas a los productos")
+
 public class ProductoController {
-
-
 
     private List<Producto> productos;
     private ProductoService productoService;
@@ -22,9 +25,9 @@ public class ProductoController {
         this.productoService = new ProductoService();
     }
 
-
 //BUSCAR TODOS
     @GetMapping("/productos")
+    @Operation(summary= "obtener todos los productos", description = "retorna una vista de productos")
     public List<Producto> getAllProductos(){
         return this.productoService.getAll();
     }
